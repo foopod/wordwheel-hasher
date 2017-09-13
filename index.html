@@ -45,10 +45,12 @@
 
             function convert(){
                 var hash = md5(document.getElementById("answer").value.toLowerCase());
-                $("#hash").html(hash);
-                $("#copy").attr("data-clipboard-text", hash);
-                new Clipboard('.btn');
-                $("#hashDiv").show();
+                if(document.getElementById("answer").value.length > 0){
+                    $("#hash").html(hash);
+                    $("#copy").attr("data-clipboard-text", hash);
+                    new Clipboard('.btn');
+                    $("#hashDiv").show();
+                }
             }
         </script>
 
