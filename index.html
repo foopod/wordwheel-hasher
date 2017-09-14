@@ -3,6 +3,9 @@
     <title>WordWheel Hasher</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <style>
          body{
               font-family: Open Sans;
@@ -16,19 +19,44 @@
         button{
            margin-left:10px; 
          }
+         .center {
+            float: none;
+            margin: auto;  
+        }
         </style>
 </head>
 <body> 
     <h2>
         WordWheel Hasher
     </h2>
-    <p>Please include the whole word</p>
-    <input id="answer"/>
-    <button onclick="convert()">Get Hash</button> 
+    <div class="container">
+    <form>
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-3 center">
+                <div class="input-group">
+                    <input type="text" id="answer" class="form-control" placeholder="Your word here..." aria-label="Your word here...">
+                    <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button" onclick="convert()">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
 
     <div id="hashDiv">
-        <p><span id="hash"></span><button id="copy" class="btn">Copy</button></p>
+        <!-- <p><span id="hash"></span><button id="copy" class="btn btn-primary">Copy</button></p> -->
+        <div class="col-sm-12 col-md-6 col-lg-4 center">
+            <div class="input-group">
+                <input type="text" id="hash" class="form-control">
+                <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button" id="copy">Copy</button>
+                </span>
+            </div>
+        </div>
     </div>
+</div>
+
+    
     
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -44,7 +72,7 @@
             function convert(){
                 var hash = md5(document.getElementById("answer").value.toLowerCase());
                 if(document.getElementById("answer").value.length > 0){
-                    $("#hash").html(hash);
+                    $("#hash").val(hash);
                     $("#copy").attr("data-clipboard-text", hash);
                     new Clipboard('.btn');
                     $("#hashDiv").show();
