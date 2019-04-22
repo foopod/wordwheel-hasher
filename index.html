@@ -38,7 +38,7 @@
                     <div class="input-group">
                         <input type="text" id="answer" class="form-control" placeholder="Your word here..." aria-label="Your word here...">
                         <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button" onclick="convert()">Go!</button>
+                        <button id="submitButton" class="btn btn-primary" type="button" onclick="convert()">Go!</button>
                         </span>
                     </div>
                 </div>
@@ -79,6 +79,19 @@
                         $("#hashDiv").show();
                     }
                 }
+                // Get the input field
+                var input = document.getElementById("answer");
+
+                // Execute a function when the user releases a key on the keyboard
+                input.addEventListener("keyup", function(event) {
+                  // Number 13 is the "Enter" key on the keyboard
+                  if (event.keyCode === 13) {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    document.getElementById("submitButton").click();
+                  }
+                });
             </script>
 
     </body>
