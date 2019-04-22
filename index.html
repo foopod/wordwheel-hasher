@@ -77,6 +77,8 @@
                         $("#copy").attr("data-clipboard-text", hash);
                         new Clipboard('.btn');
                         $("#hashDiv").show();
+                        document.getElementById("copy").click();
+                        document.getElementById("copy").innerHTML = "Copied";
                     }
                 }
                 // Get the input field
