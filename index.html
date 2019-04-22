@@ -78,7 +78,8 @@
                         new Clipboard('.btn');
                         $("#hashDiv").show();
                         document.getElementById("copy").click();
-                        document.getElementById("copy").innerHTML = "Copied";
+                        setTimeout(function(){document.getElementById("copy").innerHTML = "Copied"},300 )
+                        
                     }
                 }
                 // Get the input field
